@@ -1,0 +1,69 @@
+---
+layout: default
+---
+
+<div class="album py-5 bg-light">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-8">
+				<div class="card mb-8 box-shadow">
+					<div class="card-body">
+
+						<h2 class="card-title">Details</h2>
+						{{ content }}
+<hr>
+						<h2 class="card-title">Installation</h2>
+
+						<h5 class="card-title">Command Line</h5>
+						<pre><code>cloudgene install {{ page.app_id }} {{ page.package_url }}</code></pre>
+
+						<h5>GUI</h5>
+						<ol>
+							<li>Login to Clougene and open the Admin Panel</li>
+							<li>Click on Applications / Install App</li>
+							<li>The installation dialog appears. Please enter the following information:<br>
+								<table>
+									<tr>
+										<td><b>Id:</b></td>
+										<td><input type="text" style="width:500px;" value="{{ page.app_id }}" /></td>
+									</tr>
+									<tr>
+										<td><b>Url:</b></td>
+										<td> <input type="text" style="width:500px;" value="{{ page.package_url }}" /> <br></td>
+									</tr>
+								</table>
+							</li>
+							<li>A confirmation dialog appears and you can change permissions for the application</li>
+						</ol>
+
+					</div>
+				</div>
+			</div>
+			<div class="col-md-4">
+				<div class="card mb-4 box-shadow">
+					<div class="card-body">
+
+						<h5 class="card-title">Main Contributors</h5> {% for author in page.authors %}
+						<p>
+							<img src="{{author.avatar}}" />
+							<a href="mailto:{{author.mail}}">{{author.name}}</a> {% if author.twitter %}(<a href="https://twitter.com/{{author.twitter}}">@{{author.twitter}}</a>){% endif %}
+						</p>
+						{% endfor %}
+						{% if page.website %}
+						<h5 class="card-title">Website</h5>
+						<p>
+							<a href="{{ page.website }}">{{ page.website }}</a>
+						</p>
+						{% endif %}
+						{% if page.source_url %}
+						<h5 class="card-title">Source</h5>
+						<p>
+							<a href="{{ page.source_url }}">{{ page.source_url }}</a>
+						</p>
+						{% endif %}
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
