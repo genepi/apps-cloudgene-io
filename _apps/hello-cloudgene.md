@@ -1,7 +1,7 @@
 ---
 layout: app
 title: Hello Cloudgene
-app_id: hello
+app_id: lukfor-hello-cloudgene	
 version: 1.2.0
 last_update: 2018-05-20
 website: https://github.com/lukfor/hello-cloudgene
@@ -17,4 +17,3 @@ authors:
 ---
 
 HelloWorld Application for Cloudgene
-

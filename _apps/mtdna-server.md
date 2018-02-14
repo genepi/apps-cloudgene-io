@@ -1,7 +1,7 @@
 ---
 layout: app
 title: mtDNA-Server
-app_id: mtdna-server
+app_id: seppinho-mtdna-server-workflow
 version: 1.0.3
 last_update: 2018-05-20
 website: https://mtdna-server.uibk.ac.at

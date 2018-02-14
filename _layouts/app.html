@@ -15,24 +15,40 @@ layout: default
 						<h2 class="card-title">Installation</h2>
 
 						<h5 class="card-title">Command Line</h5>
-						<pre><code>cloudgene install {{ page.app_id }} {{ page.package_url }}</code></pre>
+						{% if page.package_url contains "github://" %}
+	             <pre><code>cloudgene github-install {{ page.package_url | replace: "github://", "" }}</code></pre>
+						{% else %}
+							<pre><code>cloudgene install {{ page.app_id }} {{ page.package_url }}</code></pre>
+						{% endif %}
 
 						<h5>GUI</h5>
 						<ol>
 							<li>Login to Clougene and open the Admin Panel</li>
-							<li>Click on Applications / Install App</li>
+							{% if page.package_url contains "github://" %}
+							<li>Click on Applications / <b>Install App from GitHub</b></li>
 							<li>The installation dialog appears. Please enter the following information:<br>
 								<table>
 									<tr>
-										<td><b>Id:</b></td>
-										<td><input type="text" style="width:500px;" value="{{ page.app_id }}" /></td>
-									</tr>
-									<tr>
-										<td><b>Url:</b></td>
-										<td> <input type="text" style="width:500px;" value="{{ page.package_url }}" /> <br></td>
+										<td> <input type="text" style="width:500px;" value="{{ page.package_url | replace: "github://", ""}}" /> <br></td>
 									</tr>
 								</table>
 							</li>
+
+							{% else %}
+								<li>Click on Applications / <b>Install App from URL</b></li>
+								<li>The installation dialog appears. Please enter the following information:<br>
+									<table>
+										<tr>
+											<td><b>Id:</b></td>
+											<td><input type="text" style="width:500px;" value="{{ page.app_id }}" /></td>
+										</tr>
+										<tr>
+											<td><b>Url:</b></td>
+											<td> <input type="text" style="width:500px;" value="{{ page.package_url }}" /> <br></td>
+										</tr>
+									</table>
+								</li>
+							{% endif %}
 							<li>A confirmation dialog appears and you can change permissions for the application</li>
 						</ol>
 
