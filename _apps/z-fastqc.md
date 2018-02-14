@@ -1,7 +1,7 @@
 ---
 layout: app
 title: FastQC Example
-app_id: fastqc
+app_id: genepi-cloudgene-examples-fastqc
 version: 1.2.0
 last_update: 2018-05-20
 package_url: github://genepi/cloudgene-examples/fastqc
