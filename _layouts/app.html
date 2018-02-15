@@ -27,26 +27,15 @@ layout: default
 							{% if page.package_url contains "github://" %}
 							<li>Click on Applications / <b>Install App from GitHub</b></li>
 							<li>The installation dialog appears. Please enter the following information:<br>
-								<table>
-									<tr>
-										<td> <input type="text" style="width:500px;" value="{{ page.package_url | replace: "github://", ""}}" /> <br></td>
-									</tr>
-								</table>
+								<pre><code>{{ page.package_url | replace: "github://", ""}}</code></pre></td>
 							</li>
 
 							{% else %}
 								<li>Click on Applications / <b>Install App from URL</b></li>
 								<li>The installation dialog appears. Please enter the following information:<br>
-									<table>
-										<tr>
-											<td><b>Id:</b></td>
-											<td><input type="text" style="width:500px;" value="{{ page.app_id }}" /></td>
-										</tr>
-										<tr>
-											<td><b>Url:</b></td>
-											<td> <input type="text" style="width:500px;" value="{{ page.package_url }}" /> <br></td>
-										</tr>
-									</table>
+									<b>Id:</b> <code>{{ page.app_id }}</code><br>
+									<b>Url:</b><br>
+									<pre><code>{{ page.package_url }}</code></pre>
 								</li>
 							{% endif %}
 							<li>A confirmation dialog appears and you can change permissions for the application</li>
