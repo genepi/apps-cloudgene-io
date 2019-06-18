@@ -1,7 +1,7 @@
 ---
 layout: app
 title: HapMap2 Reference Panel
-app_id: hapmap-2
+app_id: hapmap2
 version: 1.0.0
 last_update: 2018-05-20
 website: https://imputationserver.sph.umich.edu
