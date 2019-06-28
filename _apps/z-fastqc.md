@@ -4,7 +4,7 @@ title: FastQC Example
 app_id: fastqc
 version: 1.2.0
 last_update: 2018-05-20
-package_url: github://genepi/cloudgene-examples/fastqc
+package_url: genepi/cloudgene-examples/fastqc
 source_url: https://github.com/genepi/cloudgene-examples/tree/master/fastqc
 description_short: Shows how to run FastQC in Docker and analyze results using Groovy.
 category: app
