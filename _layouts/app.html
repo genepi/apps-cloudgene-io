@@ -16,9 +16,9 @@ layout: default
 
 						<h5 class="card-title">Command Line</h5>
 						{% if page.package_url contains "github://" %}
-	             <pre><code>cloudgene github-install {{ page.package_url | replace: "github://", "" }}</code></pre>
+	             <pre><code>cloudgene install {{ page.package_url | replace: "github://", "" }}</code></pre>
 						{% else %}
-							<pre><code>cloudgene install {{ page.app_id }} {{ page.package_url }}</code></pre>
+							<pre><code>cloudgene install {{ page.package_url }}</code></pre>
 						{% endif %}
 
 						<h5>GUI</h5>
