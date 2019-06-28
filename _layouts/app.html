@@ -33,7 +33,7 @@ layout: default
 							{% else %}
 								<li>Click on Applications / <b>Install App from URL</b></li>
 								<li>The installation dialog appears. Please enter the following information:<br>
-									<b>Url:</b><br>
+									<br>
 									<pre><code>{{ page.package_url }}</code></pre>
 								</li>
 							{% endif %}
@@ -53,6 +53,14 @@ layout: default
 							<a href="mailto:{{author.mail}}">{{author.name}}</a> {% if author.twitter %}(<a href="https://twitter.com/{{author.twitter}}">@{{author.twitter}}</a>){% endif %}
 						</p>
 						{% endfor %}
+						
+						{% if page.version %}
+						<h5 class="card-title">Version</h5>
+						<p>
+							<a href="{{ page.version }}">{{ page.version }}</a>
+						</p>
+						{% endif %}
+						
 						{% if page.website %}
 						<h5 class="card-title">Website</h5>
 						<p>
