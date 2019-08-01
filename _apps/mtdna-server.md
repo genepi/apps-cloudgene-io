@@ -2,10 +2,10 @@
 layout: app
 title: mtDNA-Server
 app_id: seppinho-mtdna-server-workflow
-version: 1.0.3
+version: 1.1.3 
 last_update: 2018-05-20
 website: https://mtdna-server.uibk.ac.at
-package_url: github://seppinho/mtdna-server-workflow@latest
+package_url: github://seppinho/mtdna-server-workflow@v1.1.3 
 description_short: Analysis pipeline of human mitochondrial DNA data, focusing on reliable identification of heteroplasmy and contamination.
 source_url: https://github.com/seppinho/mtdna-server-workflow
 category: app

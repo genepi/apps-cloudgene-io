@@ -16,9 +16,9 @@ layout: default
 
 						<h5 class="card-title">Command Line</h5>
 						{% if page.package_url contains "github://" %}
-	             <pre><code>cloudgene github-install {{ page.package_url | replace: "github://", "" }}</code></pre>
+	             <pre><code>cloudgene install {{ page.package_url | replace: "github://", "" }}</code></pre>
 						{% else %}
-							<pre><code>cloudgene install {{ page.app_id }} {{ page.package_url }}</code></pre>
+							<pre><code>cloudgene install {{ page.package_url }}</code></pre>
 						{% endif %}
 
 						<h5>GUI</h5>
@@ -33,8 +33,7 @@ layout: default
 							{% else %}
 								<li>Click on Applications / <b>Install App from URL</b></li>
 								<li>The installation dialog appears. Please enter the following information:<br>
-									<b>Id:</b> <code>{{ page.app_id }}</code><br>
-									<b>Url:</b><br>
+									<br>
 									<pre><code>{{ page.package_url }}</code></pre>
 								</li>
 							{% endif %}
@@ -54,6 +53,14 @@ layout: default
 							<a href="mailto:{{author.mail}}">{{author.name}}</a> {% if author.twitter %}(<a href="https://twitter.com/{{author.twitter}}">@{{author.twitter}}</a>){% endif %}
 						</p>
 						{% endfor %}
+						
+						{% if page.version %}
+						<h5 class="card-title">Version</h5>
+						<p>
+							{{ page.version }}
+						</p>
+						{% endif %}
+						
 						{% if page.website %}
 						<h5 class="card-title">Website</h5>
 						<p>

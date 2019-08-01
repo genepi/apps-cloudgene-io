@@ -1,11 +1,11 @@
 ---
 layout: app
 title: Hello Cloudgene
-app_id: lukfor-hello-cloudgene	
+app_id: hello-cloudgene	
 version: 1.2.0
 last_update: 2018-05-20
 website: https://github.com/lukfor/hello-cloudgene
-package_url: github://lukfor/hello-cloudgene@latest
+package_url: lukfor/hello-cloudgene@1.2.0
 source_url: https://github.com/lukfor/hello-cloudgene
 description_short: HelloWorld Application for Cloudgene
 category: app
