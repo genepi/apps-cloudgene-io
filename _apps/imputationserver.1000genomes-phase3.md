@@ -2,10 +2,10 @@
 layout: app
 title: 1000 Genomes Phase 3
 app_id: 1000genomes-phase3
-version: 1.0.0
-last_update: 2018-05-20
+version: 2.0.0
+last_update: 2019-11-08
 website: https://imputationserver.sph.umich.edu
-package_url: https://imputationserver.sph.umich.edu/static/downloads/releases/1000genomes-phase3-1.0.0.zip
+package_url: https://imputationserver.sph.umich.edu/static/downloads/releases/1000genomes-phase3-2.0.0.zip
 description_short: 1000 Genomes Phase 3 Reference Panel for Michigan Imputation Server.
 category: data
 authors:
