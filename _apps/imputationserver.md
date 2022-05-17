@@ -2,10 +2,10 @@
 layout: app
 title: Michigan Imputationserver
 app_id: imputationserver
-version: 1.2.4
-last_update: 2019-11-08
+version: 1.6.7
+last_update: 2022-04-13
 website: https://imputationserver.sph.umich.edu
-package_url: https://github.com/genepi/imputationserver/releases/download/v1.2.4/imputationserver.zip
+package_url: https://github.com/genepi/imputationserver/releases/download/v1.6.7/imputationserver.zip
 source_url: https://github.com/genepi/imputationserver
 description_short: A new web-based service for imputation that facilitates access to new reference panels and greatly improves user experience and productivity.
 category: app
