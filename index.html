@@ -1,0 +1,141 @@
+---
+layout: default
+title: Applications
+---
+<div class="album py-5 bg-light">
+  <div class="container">
+    <div class="row">
+    {% for app in site.apps %}
+      <div class="col-md-4">
+        <div class="card mb-4 box-shadow">
+          <div class="card-body">
+            <h5 class="card-title">
+              <small class="text-muted">{{app.permalink}}</small><br>
+              <a href="{{ app.github }}">{{ app.title }}</a> {{ app.releases[0].version }}
+            </h5>
+            <div style="height: 150px;">
+              <p class="card-text">{{ app.description_short }}</p>
+            </div>
+            <div class="d-flex justify-content-between align-items-center">
+              <div>
+                <button 
+                  class="btn-install btn btn-secondary btn-sm" 
+                  data-url="{{ app.permalink }}"
+                  data-title="{{ app.title | escape }}"
+                  data-releases='{{ app.releases | jsonify | escape }}'>
+                  Install
+                </button>
+                <!--<a href="{{app.url}}" class="btn-install btn btn-secondary btn-sm" " target="_blank">Versions</a>-->
+              </div>
+              <div>
+                {% for author in app.authors %}
+                  <img src="{{ author.avatar }}" title="{{ author.name }}" />
+                {% endfor %}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    {% endfor %}
+    </div>
+  </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="installModal" tabindex="-1" role="dialog" aria-labelledby="installModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h5 class="modal-title" id="installModalLabel">Installation</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span> <!-- Shows "X" icon -->
+        </button>
+      </div>
+
+      <!-- Modal Body -->
+      <div class="modal-body">
+        <div id="installInstructions">
+          <p>
+            To install the latest version of the application, please run the following command:
+          </p>
+          <div class="input-group mb-3">
+            <input type="text" class="form-control small" id="latestReleaseCommand" readonly>
+            <div class="input-group-append">
+              <button class="btn btn-outline-secondary" type="button" id="copyCommand">Copy</button>
+            </div>
+          </div>
+        
+        
+          <button class="btn btn-link p-0" id="toggleReleases" style="font-size: 0.9rem;">Show previous versions</button>
+        
+          <ul id="releaseList" class="list-group mt-3" style="display: none;">
+            <!-- Older releases will be injected here -->
+          </ul>
+        </div>
+      </div>
+
+      <!-- Modal Footer -->
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<script>
+  document.querySelectorAll(".btn-install").forEach(button => {
+    button.addEventListener("click", () => {
+      const title = button.dataset.title;
+      const url = location.protocol + '//' + location.host + "/" + button.dataset.url;
+      const releases = JSON.parse(button.dataset.releases);
+  
+      const modalTitle = document.getElementById("installModalLabel");
+      const latestCommandInput = document.getElementById("latestReleaseCommand");
+      const releaseList = document.getElementById("releaseList");
+      const toggleReleases = document.getElementById("toggleReleases");
+      const copyBtn = document.getElementById("copyCommand");
+  
+      modalTitle.textContent = `Installation`;
+      releaseList.innerHTML = "";
+  
+      if (releases.length > 0) {
+        const latest = releases[0];
+        latestCommandInput.value = `cloudgene install ${url}@${latest.version}`;
+  
+        if (releases.length > 1) {
+          for (let i = 1; i < releases.length; i++) {
+            const r = releases[i];
+            const li = document.createElement("li");
+            li.className = "list-group-item";
+            li.innerHTML = `<strong>${r.version}</strong><br><code>cloudgene install ${url}@${r.version}</code>`;
+            releaseList.appendChild(li);
+          }
+  
+          toggleReleases.style.display = "inline";
+          releaseList.style.display = "none";
+          toggleReleases.textContent = "Show previous versions";
+        } else {
+          toggleReleases.style.display = "none";
+        }
+      }
+  
+      toggleReleases.onclick = () => {
+        const isVisible = releaseList.style.display === "block";
+        releaseList.style.display = isVisible ? "none" : "block";
+        toggleReleases.textContent = isVisible ? "Show previous versions" : "Hide previous versions";
+      };
+  
+      copyBtn.onclick = () => {
+        latestCommandInput.select();
+        document.execCommand("copy");
+        copyBtn.textContent = "Copied!";
+        setTimeout(() => (copyBtn.textContent = "Copy"), 1500);
+      };
+  
+      $("#installModal").modal("show");
+    });
+  });
+  </script>

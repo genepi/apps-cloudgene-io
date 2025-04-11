@@ -1,0 +1,27 @@
+---
+layout: none
+content-type: application/json
+---
+
+{
+    "type": "pack",
+    "releases": [
+      {% for release in page.releases %}
+      {
+        "version": "{{ release.version }}",
+        "content": [
+          {% for item in release.content %}
+          {
+            "version": "{{ item.version }}",
+            "url": "{{ item.url }}"
+            {% if item.config %}
+            ,
+            "config": {{ item.config | jsonify }}
+            {% endif %}
+          }{% if forloop.last == false %},{% endif %}
+          {% endfor %}
+        ]
+      }{% if forloop.last == false %},{% endif %}
+      {% endfor %}
+    ]
+  }

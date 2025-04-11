@@ -7,4 +7,3 @@ baseurl: ''
 collections:
   apps:
     output: true
-    permalink: /:title

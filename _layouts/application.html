@@ -1,0 +1,16 @@
+---
+layout: none
+content-type: application/json
+---
+
+{
+  "type": "application",
+  "releases": [
+    {% for release in page.releases %}
+    {
+      "version": "{{ release.version }}",
+      "url": "{{ release.url }}"
+    }{% if forloop.last == false %},{% endif %}
+    {% endfor %}
+  ]
+}

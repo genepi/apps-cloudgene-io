@@ -1,0 +1,55 @@
+---
+layout: default
+---
+
+<div class="album py-5 bg-light">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-8">
+				<div class="card mb-8 box-shadow">
+					<div class="card-body">
+
+						<h2 class="card-title">Details</h2>
+						{{ content }}
+<hr>
+						<h2 class="card-title">Installation</h2>
+
+						<h5 class="card-title">Command Line</h5>
+							<pre><code>cloudgene install {{ page.releases[0].url }}</code></pre>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-4">
+				<div class="card mb-4 box-shadow">
+					<div class="card-body">
+						
+						<h5 class="card-title">Version</h5>
+						<p>
+							{{ page.releases[0].version }}
+						</p>
+						
+						{% if page.website %}
+						<h5 class="card-title">Website</h5>
+						<p>
+							<a href="{{ page.website }}">{{ page.website }}</a>
+						</p>
+						{% endif %}
+						{% if page.github %}
+						<h5 class="card-title">GitHub</h5>
+						<p>
+							<a href="{{ page.github }}">{{ page.github }}</a>
+						</p>
+						{% endif %}
+						<h5 class="card-title">Main Contributors</h5>
+						{% for author in page.authors %}
+						<p>
+							<img src="{{author.avatar}}" />
+							<a href="mailto:{{author.mail}}">{{author.name}}</a> {% if author.twitter %}(<a href="https://twitter.com/{{author.twitter}}">@{{author.twitter}}</a>){% endif %}
+						</p>
+						{% endfor %}						
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
